@@ -1,9 +1,9 @@
 # CS 457 Project Statement of Work (SOW) & Protocol Specification Template
 
-**Student Name:** [Your Full Name]  
-**Date:** [YYYY-MM-DD]  
+**Student Name:** Liam Fuller  
+**Date:** 09-17-2026
 **Course:** CS 457 - Computer Networks  
-**Target Server Domain:** `server.[yourlastname].edu`  
+**Target Server Domain:** `server.fuller.edu`  
 
 ---
 
@@ -17,14 +17,14 @@
 > - You are encouraged to use python, but I'm not going to make it a strict requirement. The instructor and TA's ability to help with C or Rust, etc will be diminished in other languages.
 
 ### 1.1 Game Overview
-- **Chosen Game:** [e.g., Terminal Trivia, Tic-Tac-Toe, Connect Four, Battleship]
+- **Chosen Game:** Tic-Tac-Toe
 - **Player Capacity:** 2 Players (Simulated via 2 CML Client nodes)
-- **Game Summary:** [Briefly describe the gameplay mechanics and rules]
+- **Game Summary:** Tic-Tac-Toe is a turn-based strategy game played on a 3×3 grid. Player 1 uses X, and Player 2 uses O. The players alternate placing their symbol in an empty space, attempting to place three of their symbols in a row.
 
 ### 1.2 Core Game Rules & Win/Draw Conditions
-- **Turn Mechanics:** [Explain how turn order is enforced between Player 1 and Player 2]
-- **Victory Condition:** [Define how a player wins the game]
-- **Draw/Tie Condition:** [Define how a draw/tie is detected and handled]
+- **Turn Mechanics:** Player 1 (X) takes the first turn. After a player selects an empty space, the turn switches to the other player. A player cannot place a symbol in an occupied space or move while it is the other player’s turn. The game server tracks whose turn it is and rejects invalid moves.
+- **Victory Condition:** A player wins by placing three of their symbols in a horizontal, vertical, or diagonal row. After every valid move, the server checks all possible winning combinations.
+- **Draw/Tie Condition:** The game ends in a draw when all nine spaces are occupied and neither player has created a row of three symbols. The server then informs both players that the game ended in a tie.
 
 ---
 
