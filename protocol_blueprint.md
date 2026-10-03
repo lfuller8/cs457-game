@@ -21,8 +21,6 @@ The server gives the person who connected first Player_1 and X. Player_2 is assi
 
 ## Message Types
 
-Each example below will also have `\n` added at the end when it is sent.
-
 ### CONNECT
 
 This is sent from the client to the server to join the game. The player_id is null because the server has not assigned the player an ID yet.
@@ -30,8 +28,8 @@ This is sent from the client to the server to join the game. The player_id is nu
 The payload contains:
 - `alias`: A string containing the player's display name.
 
-```json
-{"msg_type":"CONNECT","player_id":null,"payload":{"alias":"Liam"},"timestamp":1727000000}
+```text
+{"msg_type":"CONNECT","player_id":null,"payload":{"alias":"Liam"},"timestamp":1727000000}\n
 ```
 
 ### LOBBY_WAIT
@@ -43,8 +41,8 @@ The payload contains:
 - `symbol`: A string containing "X".
 - `message`: A string explaining that the server is waiting.
 
-```json
-{"msg_type":"LOBBY_WAIT","player_id":"SERVER","payload":{"assigned_id":"Player_1","symbol":"X","message":"Waiting for Player_2"},"timestamp":1727000001}
+```text
+{"msg_type":"LOBBY_WAIT","player_id":"SERVER","payload":{"assigned_id":"Player_1","symbol":"X","message":"Waiting for Player_2"},"timestamp":1727000001}\n
 ```
 
 ### GAME_START
@@ -57,8 +55,8 @@ The payload contains:
 - `board`: An array containing nine empty strings.
 - `current_turn`: A string containing "Player_1".
 
-```json
-{"msg_type":"GAME_START","player_id":"SERVER","payload":{"assigned_id":"Player_2","symbol":"O","board":["","","","","","","","",""],"current_turn":"Player_1"},"timestamp":1727000002}
+```text
+{"msg_type":"GAME_START","player_id":"SERVER","payload":{"assigned_id":"Player_2","symbol":"O","board":["","","","","","","","",""],"current_turn":"Player_1"},"timestamp":1727000002}\n
 ```
 
 ### MOVE
@@ -69,8 +67,8 @@ The payload contains:
 - `row`: An integer from 0–2.
 - `col`: An integer from 0–2.
 
-```json
-{"msg_type":"MOVE","player_id":"Player_1","payload":{"row":0,"col":2},"timestamp":1727000005}
+```text
+{"msg_type":"MOVE","player_id":"Player_1","payload":{"row":0,"col":2},"timestamp":1727000005}\n
 ```
 
 ### STATE_UPDATE
@@ -81,8 +79,8 @@ The payload contains:
 - `board`: An array containing nine strings, using "X", "O", or "".
 - `current_turn`: A string containing "Player_1" or "Player_2".
 
-```json
-{"msg_type":"STATE_UPDATE","player_id":"SERVER","payload":{"board":["","","X","","","","","",""],"current_turn":"Player_2"},"timestamp":1727000006}
+```text
+{"msg_type":"STATE_UPDATE","player_id":"SERVER","payload":{"board":["","","X","","","","","",""],"current_turn":"Player_2"},"timestamp":1727000006}\n
 ```
 
 ### ERROR
@@ -102,8 +100,8 @@ The error codes are:
 - `PLAYER_ID_MISMATCH`: The ID does not match the player's connection.
 - `ROOM_FULL`: Two players have already joined.
 
-```json
-{"msg_type":"ERROR","player_id":"SERVER","payload":{"code":"CELL_OCCUPIED","message":"That cell is already taken"},"timestamp":1727000007}
+```text
+{"msg_type":"ERROR","player_id":"SERVER","payload":{"code":"CELL_OCCUPIED","message":"That cell is already taken"},"timestamp":1727000007}\n
 ```
 
 ### DISCONNECT
@@ -113,8 +111,8 @@ This is sent from the client to the server when the player chooses to leave. If 
 The payload contains:
 - `reason`: A string containing "quit".
 
-```json
-{"msg_type":"DISCONNECT","player_id":"Player_1","payload":{"reason":"quit"},"timestamp":1727000008}
+```text
+{"msg_type":"DISCONNECT","player_id":"Player_1","payload":{"reason":"quit"},"timestamp":1727000008}\n
 ```
 
 ### GAME_OVER
@@ -128,8 +126,8 @@ The payload contains:
 - `board`: An array containing the nine final cells.
 - `scores`: An object containing integer scores for Player_1 and Player_2. The winner gets 1 and the other player gets 0. Both get 0 for a draw.
 
-```json
-{"msg_type":"GAME_OVER","player_id":"SERVER","payload":{"result":"win","winner_id":"Player_1","reason":"three_in_a_row","board":["X","X","X","O","O","","","",""],"scores":{"Player_1":1,"Player_2":0}},"timestamp":1727000010}
+```text
+{"msg_type":"GAME_OVER","player_id":"SERVER","payload":{"result":"win","winner_id":"Player_1","reason":"three_in_a_row","board":["X","X","X","O","O","","","",""],"scores":{"Player_1":1,"Player_2":0}},"timestamp":1727000010}\n
 ```
 
 ## Connection Termination
